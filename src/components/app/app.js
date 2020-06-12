@@ -4,11 +4,20 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 import ErrorBoundry from '../error-boundry';
 import ErrorIndicator from '../error-indicator';
+
 import ItemDetails, { Record } from '../item-details/item-details';
-import ItemList from '../item-list/item-list';
 import Row from '../row';
 
 import SwapiService from '../../services/swapi-service';
+
+import {
+  PersonList,
+  PlanetList,
+  StarshipList,
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails  
+} from '../sw-componets';
 
 import './app.css';
 
@@ -75,25 +84,35 @@ export default class App extends Component {
       </ItemDetails>
     );
 
-    const allPeople = (
-      <ItemList
-        getData={getAllPeople}
-        onItemSelected={() => {}}>
-
-        { ({name}) => <span>{name}</span> }
-      </ItemList>
-    );
-
     return (
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
           { planet }
-          <Row
-            left={allPeople}
-            right={personDetails}
-          />
 
+          <PersonList>
+            { ({name}) => <span>{name}</span> }
+          </PersonList>
+
+          <PersonDetails itemId={11}>
+            { ({name}) => <span>{name}</span> }
+          </PersonDetails>
+
+          <StarshipList>
+            { ({name}) => <span>{name}</span> }
+          </StarshipList>
+
+          <StarshipDetails itemId={9}>
+            { ({name}) => <span>{name}</span> }
+          </StarshipDetails>
+
+          <PlanetList>
+            { ({name}) => <span>{name}</span> }
+          </PlanetList>
+
+          <PlanetDetails itemId={5}>
+            { ({name}) => <span>{name}</span> }
+          </PlanetDetails>
 
         </div>
       </ErrorBoundry>
